@@ -5,6 +5,7 @@ import ProductList from './ProductList';
 import { Button,  Alert } from 'react-native';
 import Rating from './Rating';
 import MyForm from './MyForm';
+import GitHub from './GitHub';
   
 function AppBar(){
   return (
@@ -49,7 +50,8 @@ export default function App () {
   return (
     <NativeBaseProvider>
       <AppBar/>
-    <MyForm />
+      <GitHub />
+    {/* <MyForm /> */}
       {/* <Text>Hello,</Text>
       <Text>{formatName(user)}</Text>
    <ProductList /> */}
