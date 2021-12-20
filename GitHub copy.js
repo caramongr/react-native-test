@@ -13,35 +13,86 @@ Input } from 'native-base';
 import { Text, FlatList,View, StyleSheet, StatusBar, Button,Linking, ScrollView} from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-import SearchBar from './SearchBar';
+
+
 
 
 function GitHub() {
 
   const [data, setData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('Greg');
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (text) =>{
-    console.log("handleChange")
-setSearchTerm(text);
-console.log(text);
-// setIsLoading(true);
-// getData();
+setSearchTerm(text)
   }
 
 
 
+
+  function SearchBar() {
+    return (
+
+
+
+        <VStack width="100%" space={5} alignItems="center">
+          {/* <Heading fontSize="lg">Material</Heading> */}
+          <Input
+            placeholder="Search People & Places"
+  placeholder="Search"
+  // onChange={text=>handleChange(text)}
+  onChangeText={
+    text =>{handleChange(text)}
+  }
+  
+  defaultValue={searchTerm}
+            bg="#fff"
+            width="100%"
+            borderRadius="4"
+            py="3"
+            px="1"
+            fontSize="14"
+            _web={{
+              _focus: { borderColor: 'muted.300', style: { boxShadow: 'none' } },
+            }}
+            InputLeftElement={
+              <Button title="fgfgf" onPress={handleSearch} transparent />
+              // <Icon
+              //   m="2"
+              //   ml="3"
+              //   size="6"
+              //   color="gray.400"
+              //   as={<MaterialIcons name="search" />}
+              // />
+            }
+            InputRightElement={
+              <Icon
+                m="2"
+                mr="3"
+                size="6"
+                color="gray.400"
+                as={<MaterialIcons name="mic" />}
+              />
+            }
+          />
+    </VStack>
+  
+   
+    );
+  }
+  
+
+  
     
 
-const handleSearch = (name) => {
-console.log("handleSearch")
+const handleSearch = () => {
+
 setIsLoading(true);
 getData();
 }
 
     useEffect(() =>{
-         getData();
+        // getData();
         },[]);
 
 
@@ -118,10 +169,10 @@ getData();
         /> */}
 
 
-      <SearchBar Changedata={(Name) => handleSearch(Name)} Changedatatext={(Name) => handleChange(Name)} /> 
+        <SearchBar/>
 
 
-
+    
     
     
     
